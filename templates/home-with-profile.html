@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block page %}
+    <!--Catalog-->
+    {% if request.user.is_authenticated %}
+        <section id="catalogPage">
+            {% if not albums %}
+                <p>No Albums in Catalog!</p>
+                <!-- If albums in catalog -->
+            {% else %}
+                <h1>All Albums</h1>
+                <div style="position: center">
+                    {% if  page_obj.has_previous %}
+                        <a href="?page={{ page_obj.previous_page_number }}">Prev <<</a>
+                    {% endif %}
+                    Page {{ page_obj.number }} of {{ paginator.num_pages }}
+
+                    {% if page_obj.has_next %}
+                        <a href="?page={{ page_obj.next_page_number }}">>> Next</a>
+                    {% endif %}
+                </div>
+
+
+                {% for album in albums %}
+                    <div class="card-box">
+                        <img src="{{ album.image_url }}" alt="album cover">
+                        <div>
+                            <div class="text-center">
+                                <p class="name">Name: {{ album.album_name }}</p>
+                                <p class="artist">Artist: {{ album.author }}</p>
+                                <p class="price">Price: ${{ album.price|floatformat:2 }}</p>
+                            </div>
+                            <div class="btn-group">
+
+                                <a href="{% url 'album details' album.pk %}">Details</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+
+{##}
+{#                <div class="pagination">#}
+{#        <span class="step-links">#}
+{#        {% if is_paginated %}#}
+{##}
+{#        {% endif %}#}
+{#        </span>#}
+{#                </div>#}
+
+            {% endif %}
+        </section>
+    {% endif %}
+{% endblock %}

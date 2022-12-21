@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block page %}
+    <!--Catalog-->
+    {% if request.user.is_authenticated %}
+    <section id="catalogPage">
+        {% if not songs %}
+            <p>Тhere are no songs</p>
+            <!-- If albums in catalog -->
+        {% else %}
+            <h1>All Songs</h1>
+            {% for song in songs %}
+                <div class="card-box">
+                    <div class="text-center">
+                        <p class="name">Name: {{ song.song_name }}</p>
+                        <p class="artist">Genre: {{ song.genre }}</p>
+                        <div class="btn-group">
+
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+
+    </section>
+    {% endif %}
+{% endblock %}

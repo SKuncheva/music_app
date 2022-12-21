@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block page %}
+    <!--Create Page-->
+{% if request.user.is_authenticated %}
+    <section class="createPage">
+        <form action="{% url 'create song' %}" method="post">
+            <fieldset>
+                <legend>Song</legend>
+                <div class="container">
+                    {{ form }}
+                    {% csrf_token %}
+                    <!-- Button for Save -->
+                    <button class="add-album" type="submit">Add Song</button>
+
+                </div>
+            </fieldset>
+        </form>
+    </section>
+{% endif %}
+{% endblock %}

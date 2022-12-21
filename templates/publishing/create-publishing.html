@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block page %}
+    <!--Create Page-->
+    {% if request.user.is_authenticated %}
+    <section class="createPage">
+        <form action="{% url 'create publishing' %}" method="post">
+            <fieldset>
+                {% if perms.album.add_publishinghouse %}
+                <legend>PublishingHouse</legend>
+                <div class="container">
+                    {{ form }}
+                    {% csrf_token %}
+                    <!-- Button for Adding Album -->
+                    <button class="add-album" type="submit">Add Publishing House</button>
+                {% else %}
+                <h3>No permissions</h3>
+                </div>
+            </fieldset>
+            {% endif %}
+        </form>
+    </section>
+    {% endif %}
+{% endblock %}

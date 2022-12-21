@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block page %}
+    <!--Details Page-->
+    {% if request.user.is_authenticated %}
+        <section id="detailsPage">
+            <div class="wrapper">
+                {% if current_album %}
+                    <div class="albumCover">
+                        <!-- Album Image -->
+                        <img src="{{ current_album.image_url }}" alt="Cover Image">
+                    </div>
+
+                    <div class="albumInfo">
+
+                        <div class="albumText">
+                            <!-- Album Info -->
+                            <h1>Name: {{ current_album.album_name }}</h1>
+                            <h3>Artist: {{ current_album.author }}</h3>
+                            <h4>Date of publication: {{ current_album.date_of_publication }} </h4>
+                            <h4>Price:{{ current_album.price|floatformat:2 }}</h4>
+                            <p>Description: {{ current_album.description }}</p>
+                        </div>
+
+                        <div class="btn-group">
+                            <a href="{% url 'songs in album' pk=object.pk %}" class="remove">Songs in album</a>
+                            {% if owner_album %}
+                                <!-- Album Buttons -->
+                                <a href="{% url 'edit album' pk=object.pk %}" class="edit">Edit</a>
+                                <a href="{% url 'delete album' pk=object.pk %}" class="remove">Delete</a>
+                                </div>
+                            {% endif %}
+                    </div>
+                {% endif %}
+            </div>
+        </section>
+    {% endif %}
+{% endblock %}
