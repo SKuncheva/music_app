@@ -18,6 +18,7 @@
                             <h1>Name: {{ current_album.album_name }}</h1>
                             <h3>Artist: {{ current_album.author }}</h3>
                             <h4>Date of publication: {{ current_album.date_of_publication }} </h4>
+
                             <h4>Price:{{ current_album.price|floatformat:2 }}</h4>
                             <p>Description: {{ current_album.description }}</p>
                         </div>
@@ -25,7 +26,7 @@
                         <div class="btn-group">
                             <a href="{% url 'songs in album' pk=object.pk %}" class="remove">Songs in album</a>
                             {% if owner_album %}
-                                <a href="{% url 'create song' %}" class="remove">Create Song</a>
+                                <a href="{% url 'create song' %}" class="remove">Add Song</a>
                                 <a href="{% url 'edit album' pk=object.pk %}" class="edit">Edit Album</a>
                                 <a href="{% url 'delete album' pk=object.pk %}" class="remove">Delete Album</a>
                                 </div>
