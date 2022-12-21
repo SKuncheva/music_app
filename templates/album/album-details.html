@@ -25,9 +25,9 @@
                         <div class="btn-group">
                             <a href="{% url 'songs in album' pk=object.pk %}" class="remove">Songs in album</a>
                             {% if owner_album %}
-                                <!-- Album Buttons -->
-                                <a href="{% url 'edit album' pk=object.pk %}" class="edit">Edit</a>
-                                <a href="{% url 'delete album' pk=object.pk %}" class="remove">Delete</a>
+                                <a href="{% url 'create song' %}" class="remove">Create Song</a>
+                                <a href="{% url 'edit album' pk=object.pk %}" class="edit">Edit Album</a>
+                                <a href="{% url 'delete album' pk=object.pk %}" class="remove">Delete Album</a>
                                 </div>
                             {% endif %}
                     </div>
