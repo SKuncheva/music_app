@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block page %}
+    {% if request.user.is_authenticated %}
+    <section class="createPage">
+        <div class="edit-delete">
+            <h2>Profile Information</h2>
+            <form method="post" action="{% url 'fill in profile' %}">
+                {{ form }}
+                {% csrf_token %}
+                <!--Profile Button Save-->
+                <button class="edit-btn" type="submit">Save</button>
+            </form>
+        </div>
+    </section>
+    {% endif %}
+    <!-- End Edit Profile Section -->
+{% endblock %}

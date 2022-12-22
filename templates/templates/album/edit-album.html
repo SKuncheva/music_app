@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block page %}
+    <!--Edit Page-->
+      {% if request.user.is_authenticated %}
+    <section class="editPage">
+        <form action="{% url 'edit album' object.pk %}" method="post">
+            <fieldset>
+                <legend>Edit Album</legend>
+                <div class="container">
+                    {{ form }}
+                    {% csrf_token %}
+
+                    <!-- Button for Editing Album -->
+                    <button class="edit-album" type="submit">Edit Album</button>
+                </div>
+            </fieldset>
+        </form>
+    </section>
+    {% endif %}
+{% endblock %}

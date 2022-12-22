@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>My Music App</title>
+    <!-- Static Load -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+</head>
+
+<body>
+<div id="box">
+
+    <!-- Navigation Bar -->
+    <header>
+        <nav>
+            <img src="{% static 'images/headphones.png' %}" alt="headphones">
+            <a href="{% url 'catalog albums' %}">Catalog</a>
+            <ul></ul>
+            <ul>
+                <!--Only for user with created profile-->
+                {% if request.user.is_authenticated %}
+                    <li>Welcome, {{ request.user.email }}</li>
+                    <li><a href="{% url 'detail profile' request.user.pk %}">Profile</a></li>
+
+                    <li><a href="{% url 'create author' %}">Create Album</a></li>
+                    <li><a href="{% url 'create publishing' %}">Publishing House</a></li>
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                    <li><a href="{% url 'register' %}">Register</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+    <!-- End Navigation Bar -->
+    {% block page %}
+    {% endblock %}
+    <!-- Footer -->
+    <footer>
+        <div>
+            Project Python Web
+        </div>
+    </footer>
+    <!-- End Footer -->
+
+</div>
+</body>
+</html>
