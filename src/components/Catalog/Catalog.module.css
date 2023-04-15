@@ -1,0 +1,29 @@
+.ulWrapper {
+  margin: 15px auto;
+  width: 1100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 25px;
+  position: relative;
+}
+.li {
+  list-style: none;
+}
+.imgCatalog{
+  box-shadow: 0 2px 4px 0 rgba(136, 144, 195, 0.2),
+    0 5px 15px 0 rgba(37, 44, 97, 0.15);
+  border-radius: 15px;
+  margin: 0px 105px;
+  width: 1300px;
+  height: 410px;
+}
+.title{
+  position: absolute;
+  font-size: 35px;
+  font-family:'Segoe UI', sans-serif;
+  top: 250px;
+  right: 400px;
+}
